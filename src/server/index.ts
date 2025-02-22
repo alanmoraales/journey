@@ -1,5 +1,5 @@
 import { j } from "./jstack";
-import imagesRouter from "@server/images/imagesRouter";
+import imagesRouter from "@/server/images/router";
 
 /**
  * This is your base API.
