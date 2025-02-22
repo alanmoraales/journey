@@ -4,6 +4,7 @@ import {
   createRouteHandler,
   type FileRouter,
 } from "uploadthing/server";
+import imagesService from "@server/images/service";
 
 const f = createUploadthing();
 
@@ -14,7 +15,11 @@ const router = {
       maxFileCount: 1,
     },
   }).onUploadComplete(async ({ file }) => {
-    console.log("file url", file);
+    await imagesService.createOne({
+      src: file.ufsUrl,
+      relativeSrc: `/${file.key}`,
+      bucketKey: file.key,
+    });
   }),
 } satisfies FileRouter;
 
