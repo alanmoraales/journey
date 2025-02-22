@@ -1,28 +1,31 @@
+import { j } from "@server/jstack";
 import {
   createUploadthing,
   createRouteHandler,
   type FileRouter,
-  UploadThingError,
 } from "uploadthing/server";
 
 const f = createUploadthing();
 
-const uploadThingRouter = {
+const router = {
   galleryImage: f({
     image: {
       maxFileSize: "32MB",
       maxFileCount: 1,
     },
   }).onUploadComplete(async ({ file }) => {
-    // This code RUNS ON YOUR SERVER after upload
     console.log("file url", file);
-    // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-    return { url: file.ufsUrl };
   }),
 } satisfies FileRouter;
 
 const routeHandler = createRouteHandler({
-  router: uploadThingRouter,
+  router: router,
 });
 
-export default routeHandler;
+const uploadthingRouter = j.router().on(["GET", "POST"], ["/"], (c) => {
+  // map hono context to uploadthing context
+  const request = c.req.raw;
+  return routeHandler(request);
+});
+
+export default uploadthingRouter;
