@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import UploadButton from "@/app/components/UploadButton";
 
 export default async function Home() {
   return (
@@ -23,6 +24,7 @@ export default async function Home() {
           </span>
         </p>
       </div>
+      <UploadButton />
     </main>
   );
 }
