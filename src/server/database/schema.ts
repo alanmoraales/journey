@@ -4,10 +4,10 @@ export const images = pgTable("images", {
   id: serial("id").primaryKey(),
   src: text("src").notNull(),
   relativeSrc: text("relativeSrc").notNull(),
-  width: numeric("width").notNull(),
-  height: numeric("height").notNull(),
+  bucketKey: text("bucketKey").notNull(),
+  width: numeric("width"),
+  height: numeric("height"),
   placeholderBase64: text("placeholderBase64"),
   placeholderCss: text("placeholderCss"),
-  bucketKey: text("bucketKey").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
