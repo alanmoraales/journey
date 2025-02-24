@@ -6,6 +6,7 @@ import {
 } from "uploadthing/server";
 import imagesService from "@server/images/service";
 import generateImagePlaceholderQueue from "@server/images/workers/generateImagePlaceholder";
+import environment from "@server/environment";
 
 const f = createUploadthing();
 
@@ -17,7 +18,7 @@ const router = {
     },
   }).onUploadComplete(async ({ file }) => {
     const image = await imagesService.createOne({
-      src: `https://ik.imagekit.io/alanmoraales/${file.key}`,
+      src: `${environment.imageKit.url}/${file.key}`,
       bucketKey: file.key,
     });
     generateImagePlaceholderQueue.add({
