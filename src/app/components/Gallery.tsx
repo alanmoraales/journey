@@ -1,20 +1,32 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import getImages from "@/server/images/actions/getImages";
+import { images } from "@/server/database/schema";
 
-const Gallery = async () => {
-  const images = await getImages();
+const Gallery = ({
+  initialImages,
+}: {
+  initialImages: (typeof images.$inferSelect)[];
+}) => {
+  const { data: images } = useQuery({
+    queryKey: ["images"],
+    queryFn: getImages,
+    initialData: initialImages,
+  });
 
   return (
     <div className="grid grid-cols-4 gap-4">
-      {images.map((image) => (
+      {images?.map((image) => (
         <div key={image.id}>
           <Image
             src={image.src}
             alt={image.src}
-            height={Number(image.height)}
-            width={Number(image.width)}
+            height={image.height ? Number(image.height) : undefined}
+            width={image.width ? Number(image.width) : undefined}
             blurDataURL={image.placeholderBase64 ?? ""}
-            placeholder="blur"
+            placeholder={image.placeholderBase64 ? "blur" : undefined}
           />
         </div>
       ))}
