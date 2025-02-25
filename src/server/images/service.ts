@@ -19,9 +19,15 @@ const updateOne = async (
   return updatedImage[0]!;
 };
 
+const getAll = async () => {
+  const allImages = await db.select().from(images);
+  return allImages;
+};
+
 const imageService = {
   createOne,
   updateOne,
+  getAll,
 };
 
 export default imageService;
