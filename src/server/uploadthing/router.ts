@@ -18,8 +18,9 @@ const router = {
     },
   }).onUploadComplete(async ({ file }) => {
     const src = `${environment.imageKit.url}/${file.key}`;
-    const imageBuffer = await fetch(src).then(async (res) =>
-      Buffer.from(await res.arrayBuffer())
+    const srcToGeneratePlaceholder = `${src}?tr=w-2000`;
+    const imageBuffer = await fetch(srcToGeneratePlaceholder).then(
+      async (res) => Buffer.from(await res.arrayBuffer())
     );
     const {
       base64,
