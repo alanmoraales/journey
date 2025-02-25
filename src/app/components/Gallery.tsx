@@ -3,11 +3,17 @@
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import getImages from "@/server/images/actions/getImages";
+import { images } from "@/server/database/schema";
 
-const Gallery = () => {
+const Gallery = ({
+  initialImages,
+}: {
+  initialImages: (typeof images.$inferSelect)[];
+}) => {
   const { data: images } = useQuery({
     queryKey: ["images"],
     queryFn: getImages,
+    initialData: initialImages,
   });
 
   return (

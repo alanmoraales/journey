@@ -4,8 +4,8 @@ import {
   createRouteHandler,
   type FileRouter,
 } from "uploadthing/server";
+import { getPlaiceholder } from "plaiceholder";
 import imagesService from "@server/images/service";
-import generateImagePlaceholderQueue from "@server/images/workers/generateImagePlaceholder";
 import environment from "@server/environment";
 
 const f = createUploadthing();
@@ -17,13 +17,22 @@ const router = {
       maxFileCount: 1,
     },
   }).onUploadComplete(async ({ file }) => {
-    const image = await imagesService.createOne({
-      src: `${environment.imageKit.url}/${file.key}`,
+    const src = `${environment.imageKit.url}/${file.key}`;
+    const imageBuffer = await fetch(src).then(async (res) =>
+      Buffer.from(await res.arrayBuffer())
+    );
+    const {
+      base64,
+      css,
+      metadata: { width, height },
+    } = await getPlaiceholder(imageBuffer, { size: 10 });
+    await imagesService.createOne({
+      src,
       bucketKey: file.key,
-    });
-    generateImagePlaceholderQueue.add({
-      id: image.id,
-      src: image.src,
+      placeholderBase64: base64,
+      placeholderCss: JSON.stringify(css),
+      width: width.toString(),
+      height: height.toString(),
     });
   }),
 } satisfies FileRouter;
