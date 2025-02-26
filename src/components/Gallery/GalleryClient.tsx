@@ -1,18 +1,16 @@
 "use client";
 
-import { use } from "react";
 import NextImage from "next/image";
 import useResizeObserver from "@/hooks/useResizeObserver";
 import useJustifiedLayout from "@/hooks/useJustifiedLayout";
 import type { Image } from "@/server/images/types";
 
-function Gallery({ getImages }: { getImages: Promise<Image[]> }) {
-  const images = use(getImages);
+function Gallery({ images }: { images: Image[] }) {
   const { size, ref } = useResizeObserver<HTMLDivElement>();
   const layout = useJustifiedLayout(images, size.width);
 
   return (
-    <div ref={ref} className="w-full relative">
+    <div ref={ref} className="w-9/10 relative m-auto">
       {layout.map((box, index) => {
         const image = images[index]!;
         return (
