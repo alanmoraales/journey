@@ -18,15 +18,18 @@ const router = {
     },
   }).onUploadComplete(async ({ file }) => {
     const src = `${environment.imageKit.url}/${file.key}`;
-    const srcToGeneratePlaceholder = `${src}?tr=w-2000`;
+    const srcToGeneratePlaceholder = `${src}?tr=w-10`;
+    const srcToGenerateDimensions = `${src}?tr=w-3000`;
     const imageBuffer = await fetch(srcToGeneratePlaceholder).then(
       async (res) => Buffer.from(await res.arrayBuffer())
     );
+    const dimensionsImageBuffer = await fetch(srcToGenerateDimensions).then(
+      async (res) => Buffer.from(await res.arrayBuffer())
+    );
+    const { base64, css } = await getPlaiceholder(imageBuffer, { size: 10 });
     const {
-      base64,
-      css,
       metadata: { width, height },
-    } = await getPlaiceholder(imageBuffer, { size: 10 });
+    } = await getPlaiceholder(dimensionsImageBuffer, { size: 10 });
     await imagesService.createOne({
       src,
       bucketKey: file.key,
