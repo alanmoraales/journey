@@ -21,8 +21,9 @@
     ],
     "paths": {
       "@/server/*": ["./server/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/hooks/*": ["./src/hooks/*"]
+      "@/components/*": ["./src/components/*", "./src/components/ui/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./src/lib/*"]
     },
     "target": "ES2017"
   },
