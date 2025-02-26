@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { images } from "@/server/database/schema";
-import { useEffect, useState, use } from "react";
-import calculateLayout from "justified-layout";
+import { use } from "react";
 import useResizeObserver from "@/hooks/useResizeObserver";
+import useJustifiedLayout from "@/hooks/useJustifiedLayout";
 
 const Gallery = ({
   query,
@@ -13,29 +13,11 @@ const Gallery = ({
 }) => {
   const images = use(query);
   const { size, ref } = useResizeObserver<HTMLDivElement>();
-  const [layout, setLayout] = useState<
-    {
-      width: number;
-      height: number;
-      top: number;
-      left: number;
-    }[]
-  >([]);
-
-  useEffect(() => {
-    if (Boolean(size.width) && images) {
-      const layout = calculateLayout(
-        images.map((image) => ({
-          width: Number(image.width),
-          height: Number(image.height),
-        })),
-        {
-          containerWidth: size.width,
-        }
-      );
-      setLayout(layout.boxes);
-    }
-  }, [images, size]);
+  const imageDimensions = images.map((image) => ({
+    width: Number(image.width),
+    height: Number(image.height),
+  }));
+  const layout = useJustifiedLayout(imageDimensions, size.width);
 
   return (
     <div ref={ref} className="w-full relative">
