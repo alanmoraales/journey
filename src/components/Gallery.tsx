@@ -1,8 +1,8 @@
 "use client";
 
+import { use, useMemo } from "react";
 import Image from "next/image";
 import { images } from "@/server/database/schema";
-import { use } from "react";
 import useResizeObserver from "@/hooks/useResizeObserver";
 import useJustifiedLayout from "@/hooks/useJustifiedLayout";
 
@@ -13,10 +13,12 @@ const Gallery = ({
 }) => {
   const images = use(query);
   const { size, ref } = useResizeObserver<HTMLDivElement>();
-  const imageDimensions = images.map((image) => ({
-    width: Number(image.width),
-    height: Number(image.height),
-  }));
+  const imageDimensions = useMemo(() => {
+    return images.map((image) => ({
+      width: Number(image.width),
+      height: Number(image.height),
+    }));
+  }, [images]);
   const layout = useJustifiedLayout(imageDimensions, size.width);
 
   return (
