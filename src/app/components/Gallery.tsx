@@ -63,10 +63,10 @@ const Gallery = ({
             <Image
               src={image.src}
               alt={image.src}
-              height={image.height ? Number(image.height) : undefined}
-              width={image.width ? Number(image.width) : undefined}
-              blurDataURL={image.placeholderBase64 ?? ""}
-              placeholder={image.placeholderBase64 ? "blur" : undefined}
+              height={Number(image.height)}
+              width={Number(image.width)}
+              blurDataURL={image.placeholderBase64}
+              placeholder="blur"
               style={{
                 position: "absolute",
                 top: box.top,
