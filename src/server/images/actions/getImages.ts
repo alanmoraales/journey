@@ -2,9 +2,8 @@
 
 import imageService from "../service";
 
-const getImages = async () => {
-  const images = await imageService.getAll();
-  return images;
+const getImages = () => {
+  return imageService.getAll();
 };
 
 export default getImages;

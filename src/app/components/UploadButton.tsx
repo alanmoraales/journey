@@ -1,18 +1,17 @@
 "use client";
 
 import { generateUploadButton } from "@uploadthing/react";
-import { useQueryClient } from "@tanstack/react-query";
-
+import { useRouter } from "next/navigation";
 const UploadButton = generateUploadButton();
 
 export default function Home() {
-  const queryClient = useQueryClient();
+  const router = useRouter();
 
   return (
     <UploadButton
       endpoint="galleryImage"
       onClientUploadComplete={(res) => {
-        queryClient.refetchQueries({ queryKey: ["images"] });
+        router.refresh();
       }}
       onUploadError={(error: Error) => {
         console.log(error);

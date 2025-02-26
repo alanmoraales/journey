@@ -1,22 +1,16 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import getImages from "@/server/images/actions/getImages";
 import { images } from "@/server/database/schema";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import calculateLayout from "justified-layout";
 
 const Gallery = ({
-  initialImages,
+  query,
 }: {
-  initialImages: (typeof images.$inferSelect)[];
+  query: Promise<(typeof images.$inferSelect)[]>;
 }) => {
-  const { data: images } = useQuery({
-    queryKey: ["images"],
-    queryFn: getImages,
-    initialData: initialImages,
-  });
+  const images = use(query);
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [layout, setLayout] = useState<
@@ -56,7 +50,6 @@ const Gallery = ({
           containerWidth: size.width,
         }
       );
-      console.log(layout.boxes);
       setLayout(layout.boxes);
     }
   }, [images, size]);
