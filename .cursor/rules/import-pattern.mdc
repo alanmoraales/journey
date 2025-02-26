@@ -1,0 +1,14 @@
+---
+description: Importing from another file
+globs: *.tsx, *.ts
+---
+
+# Your rule content
+
+When importing from another file, prefer:
+
+- Using defined ts paths over relative paths
+
+The defined ts paths are defined at [tsconfig.json](mdc:tsconfig.json) at the paths property.
+
+If you see the opportunity to create a new path, please do.
