@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 const TUploadButton = generateUploadButton();
 
-export default function UploadButton() {
+function UploadButton() {
   const router = useRouter();
 
   return (
@@ -20,3 +20,5 @@ export default function UploadButton() {
     />
   );
 }
+
+export default UploadButton;

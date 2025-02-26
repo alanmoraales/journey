@@ -1,11 +1,17 @@
-import UploadButton from "@/components/UploadButton";
-import GallerySSR from "@/components/GallerySSR";
+import { Suspense } from "react";
+import imagesService from "@/server/images/service";
+import Gallery from "@/components/Gallery";
 
-export default async function Home() {
+async function Home() {
+  const getImages = imagesService.getAll();
+
   return (
     <main>
-      <UploadButton />
-      <GallerySSR />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Gallery getImages={getImages} />
+      </Suspense>
     </main>
   );
 }
+
+export default Home;

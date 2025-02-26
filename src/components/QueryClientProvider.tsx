@@ -3,12 +3,12 @@
 import {
   QueryCache,
   QueryClient,
-  QueryClientProvider,
+  QueryClientProvider as TanstackQueryClientProvider,
 } from "@tanstack/react-query";
 import { HTTPException } from "hono/http-exception";
 import { PropsWithChildren, useState } from "react";
 
-export const Providers = ({ children }: PropsWithChildren) => {
+function QueryClientProvider({ children }: PropsWithChildren) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -23,6 +23,10 @@ export const Providers = ({ children }: PropsWithChildren) => {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <TanstackQueryClientProvider client={queryClient}>
+      {children}
+    </TanstackQueryClientProvider>
   );
-};
+}
+
+export default QueryClientProvider;

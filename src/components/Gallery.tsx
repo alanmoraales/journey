@@ -1,25 +1,15 @@
 "use client";
 
-import { use, useMemo } from "react";
-import Image from "next/image";
-import { images } from "@/server/database/schema";
+import { use } from "react";
+import NextImage from "next/image";
 import useResizeObserver from "@/hooks/useResizeObserver";
 import useJustifiedLayout from "@/hooks/useJustifiedLayout";
+import type { Image } from "@/server/images/types";
 
-const Gallery = ({
-  query,
-}: {
-  query: Promise<(typeof images.$inferSelect)[]>;
-}) => {
-  const images = use(query);
+function Gallery({ getImages }: { getImages: Promise<Image[]> }) {
+  const images = use(getImages);
   const { size, ref } = useResizeObserver<HTMLDivElement>();
-  const imageDimensions = useMemo(() => {
-    return images.map((image) => ({
-      width: Number(image.width),
-      height: Number(image.height),
-    }));
-  }, [images]);
-  const layout = useJustifiedLayout(imageDimensions, size.width);
+  const layout = useJustifiedLayout(images, size.width);
 
   return (
     <div ref={ref} className="w-full relative">
@@ -27,7 +17,7 @@ const Gallery = ({
         const image = images[index]!;
         return (
           <div key={image.id}>
-            <Image
+            <NextImage
               src={image.src}
               alt={image.src}
               height={Number(image.height)}
@@ -47,6 +37,6 @@ const Gallery = ({
       })}
     </div>
   );
-};
+}
 
 export default Gallery;

@@ -1,32 +1,31 @@
-import { eq } from "drizzle-orm";
 import db from "@/server/database/client";
 import { images } from "@/server/database/schema";
+import type { CreateImagePayload, Image } from "@/server/images/types";
 
-const createOne = async (image: typeof images.$inferInsert) => {
-  const newImage = await db.insert(images).values(image).returning();
-  return newImage[0]!;
-};
-
-const updateOne = async (
-  id: number,
-  image: Partial<typeof images.$inferInsert>
-) => {
-  const updatedImage = await db
-    .update(images)
-    .set(image)
-    .where(eq(images.id, id))
+async function createOne(image: CreateImagePayload) {
+  const { width, height, ...restOfImage } = image;
+  const newImage = await db
+    .insert(images)
+    .values({
+      ...restOfImage,
+      width: width.toString(),
+      height: height.toString(),
+    })
     .returning();
-  return updatedImage[0]!;
-};
+  return newImage[0]!;
+}
 
-const getAll = async () => {
+async function getAll(): Promise<Image[]> {
   const allImages = await db.select().from(images);
-  return allImages;
-};
+  return allImages.map((image) => ({
+    ...image,
+    width: Number(image.width),
+    height: Number(image.height),
+  }));
+}
 
 const imageService = {
   createOne,
-  updateOne,
   getAll,
 };
 

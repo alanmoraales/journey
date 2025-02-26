@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Providers } from "@/components/providers";
+import QueryClientProvider from "@/components/QueryClientProvider";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "JStack App",
-  description: "Created using JStack",
+  title: "The Photography Journey",
+  description: "Photography of alanmoraales",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <Providers>{children}</Providers>
+        <QueryClientProvider>{children}</QueryClientProvider>
       </body>
     </html>
   );
