@@ -6,7 +6,7 @@ export default async function Home() {
   return (
     <main>
       <UploadButton />
-      <Suspense fallback={<div className="text-white">Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <GallerySSR />
       </Suspense>
     </main>
