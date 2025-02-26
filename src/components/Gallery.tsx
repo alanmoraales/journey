@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { images } from "@/server/database/schema";
-import { useEffect, useState, useRef, use } from "react";
+import { useEffect, useState, use } from "react";
 import calculateLayout from "justified-layout";
+import { useResizeObserver } from "@/hooks/useResizeObserver";
 
 const Gallery = ({
   query,
@@ -11,8 +12,7 @@ const Gallery = ({
   query: Promise<(typeof images.$inferSelect)[]>;
 }) => {
   const images = use(query);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const { size, ref } = useResizeObserver<HTMLDivElement>();
   const [layout, setLayout] = useState<
     {
       width: number;
@@ -21,23 +21,6 @@ const Gallery = ({
       left: number;
     }[]
   >([]);
-
-  useEffect(() => {
-    const observer = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        setSize({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
-        });
-      }
-    });
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     if (Boolean(size.width) && images) {
@@ -55,7 +38,7 @@ const Gallery = ({
   }, [images, size]);
 
   return (
-    <div ref={containerRef} className="w-full relative">
+    <div ref={ref} className="w-full relative">
       {layout.map((box, index) => {
         const image = images[index]!;
         return (
