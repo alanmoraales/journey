@@ -1,0 +1,28 @@
+---
+description: Adding exports to files
+globs: *.ts, *.tsx
+---
+
+# Your rule content
+
+When exporting from a file, prefer:
+
+- Exporting at the end of the file.
+- Exporting default
+- If necessary, exporting types should also be at the end of the file.
+- If necessary, export type using the export type keyword.
+- If more than one export is necesary, pick the default export, and export the extra content also at the end of the file as a normal export.
+
+Here´s and example:
+
+'''ts
+interface GoodbyeWorldProps {}
+function goodbyeWorld(props: GoodbyeWorldProps) {}
+
+interface HelloWorldProps {}
+function helloWorld(props: HelloWorldProps) {}
+
+export type { HelloWorldProps, GoodbyeWorldProps }
+export { goodbyeWorld }
+export default helloWorld
+'''
