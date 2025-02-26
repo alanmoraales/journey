@@ -1,20 +1,19 @@
 import { useEffect, useState, useRef, type RefObject } from "react";
 
-interface Size {
-  width: number;
-  height: number;
-}
-
 interface UseResizeObserver<T extends HTMLElement> {
-  size: Size;
+  size: {
+    width: number;
+    height: number;
+  };
   ref?: RefObject<T>;
 }
 
-export function useResizeObserver<
-  T extends HTMLElement
->(): UseResizeObserver<T> {
+function useResizeObserver<T extends HTMLElement>(): UseResizeObserver<T> {
   const ref = useRef<T>(undefined);
-  const [size, setSize] = useState<Size>({ width: 0, height: 0 });
+  const [size, setSize] = useState<UseResizeObserver<T>["size"]>({
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
@@ -35,3 +34,5 @@ export function useResizeObserver<
 
   return { size, ref: ref as RefObject<T> };
 }
+
+export default useResizeObserver;

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { images } from "@/server/database/schema";
 import { useEffect, useState, use } from "react";
 import calculateLayout from "justified-layout";
-import { useResizeObserver } from "@/hooks/useResizeObserver";
+import useResizeObserver from "@/hooks/useResizeObserver";
 
 const Gallery = ({
   query,
