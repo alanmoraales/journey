@@ -20,8 +20,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@server/*": ["./src/server/*"]
+      "@/server/*": ["./server/*"],
+      "@/components/*": ["./src/components/*"]
     },
     "target": "ES2017"
   },

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
-import db from "@server/database/client";
-import { images } from "@server/database/schema";
+import db from "@/server/database/client";
+import { images } from "@/server/database/schema";
 
 const createOne = async (image: typeof images.$inferInsert) => {
   const newImage = await db.insert(images).values(image).returning();

@@ -1,6 +1,5 @@
-import UploadButton from "@/app/components/UploadButton";
-import GallerySSR from "@/app/components/GallerySSR";
-import { Suspense } from "react";
+import UploadButton from "@/components/UploadButton";
+import GallerySSR from "@/components/GallerySSR";
 
 export default async function Home() {
   return (

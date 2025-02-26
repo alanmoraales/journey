@@ -2,13 +2,14 @@
 
 import { generateUploadButton } from "@uploadthing/react";
 import { useRouter } from "next/navigation";
-const UploadButton = generateUploadButton();
 
-export default function Home() {
+const TUploadButton = generateUploadButton();
+
+export default function UploadButton() {
   const router = useRouter();
 
   return (
-    <UploadButton
+    <TUploadButton
       endpoint="galleryImage"
       onClientUploadComplete={(res) => {
         router.refresh();

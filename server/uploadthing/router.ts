@@ -1,12 +1,12 @@
-import { j } from "@server/jstack";
+import { j } from "@/server/jstack";
 import {
   createUploadthing,
   createRouteHandler,
   type FileRouter,
 } from "uploadthing/server";
 import { getPlaiceholder } from "plaiceholder";
-import imagesService from "@server/images/service";
-import environment from "@server/environment";
+import imagesService from "@/server/images/service";
+import environment from "@/server/environment";
 
 const f = createUploadthing();
 

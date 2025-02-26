@@ -1,5 +1,5 @@
 import getImages from "@/server/images/actions/getImages";
-import Gallery from "./Gallery";
+import Gallery from "@/components/Gallery";
 import { Suspense } from "react";
 
 const GallerySSR = () => {
