@@ -11,7 +11,7 @@ function Gallery({ images }: { images: Image[] }) {
 
   return (
     <div ref={ref} className="w-9/10 relative m-auto">
-      {layout.map((box, index) => {
+      {layout.boxes.map((box, index) => {
         const image = images[index]!;
         return (
           <div key={image.id}>
