@@ -10,6 +10,9 @@ const EnvironmentService = () => ({
   mixpanel: {
     token: String(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN),
   },
+  store: {
+    url: String(process.env.NEXT_PUBLIC_STORE_URL),
+  },
 });
 
 const environmentService = EnvironmentService();
