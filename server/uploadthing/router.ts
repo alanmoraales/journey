@@ -26,7 +26,7 @@ const router = {
     const dimensionsImageBuffer = await fetch(srcToGenerateDimensions).then(
       async (res) => Buffer.from(await res.arrayBuffer())
     );
-    const { base64, css } = await getPlaiceholder(imageBuffer, { size: 10 });
+    const { base64 } = await getPlaiceholder(imageBuffer, { size: 10 });
     const {
       metadata: { width, height },
     } = await getPlaiceholder(dimensionsImageBuffer, { size: 10 });
@@ -34,9 +34,8 @@ const router = {
       src,
       bucketKey: file.key,
       placeholderBase64: base64,
-      placeholderCss: JSON.stringify(css),
-      width: width.toString(),
-      height: height.toString(),
+      width: width,
+      height: height,
     });
   }),
 } satisfies FileRouter;
