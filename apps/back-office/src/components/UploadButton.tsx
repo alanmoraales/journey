@@ -11,7 +11,7 @@ function UploadButton() {
   return (
     <TUploadButton
       endpoint="galleryImage"
-      onClientUploadComplete={(res) => {
+      onClientUploadComplete={() => {
         router.refresh();
       }}
       onUploadError={(error: Error) => {
