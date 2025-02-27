@@ -22,26 +22,26 @@ const printSizes: IPrintSizes[] = [
     displayNameInches: "6x4",
     displayNameCm: "15x10",
     prices: {
-      withFrame: 110,
-      withoutFrame: 70,
+      withFrame: 230,
+      withoutFrame: 130,
     },
   },
-  {
-    id: "6x8",
-    displayNameInches: "6x8",
-    displayNameCm: "15x20",
-    prices: {
-      withFrame: 240,
-      withoutFrame: 100,
-    },
-  },
+  // {
+  //   id: "6x8",
+  //   displayNameInches: "6x8",
+  //   displayNameCm: "15x20",
+  //   prices: {
+  //     withFrame: 330,
+  //     withoutFrame: 200,
+  //   },
+  // },
   {
     id: "11x14",
     displayNameInches: "11x14",
     displayNameCm: "28x36",
     prices: {
-      withFrame: 715,
-      withoutFrame: 215,
+      withFrame: 800,
+      withoutFrame: 400,
     },
   },
 ];
