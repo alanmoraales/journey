@@ -1,9 +1,12 @@
-import Gallery from "@/components/Gallery/index";
+// import Gallery from "@/components/Gallery/index";
+// import UploadButton from "@/components/UploadButton";
 
 async function Home() {
   return (
     <main>
-      <Gallery />
+      {/* <UploadButton />
+      <Gallery /> */}
+      Hola Mundo
     </main>
   );
 }
