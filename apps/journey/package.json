@@ -1,0 +1,37 @@
+{
+  "name": "journey",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "panda codegen"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
+    "@notionhq/client": "^2.2.10",
+    "@plaiceholder/next": "^3.0.0",
+    "@types/node": "20.4.7",
+    "@types/react": "18.2.18",
+    "@types/react-dom": "18.2.7",
+    "date-fns": "^2.30.0",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.12",
+    "mixpanel": "^0.18.0",
+    "next": "^13.4.19",
+    "plaiceholder": "^3.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.46.1",
+    "typescript": "5.1.6",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.9.0",
+    "encoding": "^0.1.13"
+  },
+  "packageManager": "bun@1.2.4"
+}
