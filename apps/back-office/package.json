@@ -14,6 +14,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@repo/hooks": "*",
     "@neondatabase/serverless": "^0.10.4",
     "@tailwindcss/postcss": "^4.0.0",
     "@tanstack/react-query": "^5.51.23",

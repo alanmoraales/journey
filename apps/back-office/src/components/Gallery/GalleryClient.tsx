@@ -1,8 +1,8 @@
 "use client";
 
 import NextImage from "next/image";
-import useResizeObserver from "@/hooks/useResizeObserver";
-import useJustifiedLayout from "@/hooks/useJustifiedLayout";
+import useResizeObserver from "@repo/hooks/useResizeObserver";
+import useJustifiedLayout from "@repo/hooks/useJustifiedLayout";
 import type { Image } from "@/server/images/types";
 
 function Gallery({ images }: { images: Image[] }) {

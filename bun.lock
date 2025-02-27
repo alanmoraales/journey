@@ -12,6 +12,7 @@
       "version": "0.1.0",
       "dependencies": {
         "@neondatabase/serverless": "^0.10.4",
+        "@repo/hooks": "*",
         "@tailwindcss/postcss": "^4.0.0",
         "@tanstack/react-query": "^5.51.23",
         "@uploadthing/react": "^7.3.0",
@@ -73,6 +74,9 @@
         "@pandacss/dev": "^0.9.0",
         "encoding": "^0.1.13",
       },
+    },
+    "packages/hooks": {
+      "name": "@repo/hooks",
     },
   },
   "packages": {
@@ -363,6 +367,8 @@
     "@pkgr/core": ["@pkgr/core@0.1.1", "", {}, "sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA=="],
 
     "@plaiceholder/next": ["@plaiceholder/next@3.0.0", "", { "peerDependencies": { "next": ">= 10.0.0", "plaiceholder": ">=3.0.0", "sharp": ">= 0.30.6" } }, "sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw=="],
+
+    "@repo/hooks": ["@repo/hooks@workspace:packages/hooks"],
 
     "@rtsao/scc": ["@rtsao/scc@1.1.0", "", {}, "sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g=="],
 
