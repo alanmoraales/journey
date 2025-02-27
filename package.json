@@ -1,0 +1,19 @@
+{
+  "name": "the-photography-journey-v4",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  },
+  "packageManager": "bun@1.2.4"
+}
