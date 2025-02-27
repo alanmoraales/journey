@@ -6,6 +6,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:journey": "turbo run dev --filter=journey",
     "lint": "turbo run lint"
   },
   "workspaces": [
