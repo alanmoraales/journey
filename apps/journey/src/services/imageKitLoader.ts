@@ -11,9 +11,6 @@ const imageKitLoader = ({ src, width, quality }: IImageKitLoaderProps) => {
     params.push(`q-${quality}`);
   }
   const paramsString = params.join(",");
-  var urlEndpoint = "https://ik.imagekit.io/alanmoraales";
-  if (urlEndpoint[urlEndpoint.length - 1] === "/")
-    urlEndpoint = urlEndpoint.substring(0, urlEndpoint.length - 1);
   return `${src}?tr=${paramsString}`;
 };
 
