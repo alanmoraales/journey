@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prepare": "panda codegen"
   },
   "dependencies": {
+    "@repo/hooks": "*",
     "@hookform/resolvers": "^4.1.2",
     "@notionhq/client": "^2.2.16",
     "@plaiceholder/next": "^3.0.0",
