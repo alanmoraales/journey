@@ -13,6 +13,9 @@ const EnvironmentService = () => ({
   store: {
     url: String(process.env.NEXT_PUBLIC_STORE_URL),
   },
+  backOffice: {
+    url: String(process.env.NEXT_BACK_OFFICE_API_URL),
+  },
 });
 
 const environmentService = EnvironmentService();
