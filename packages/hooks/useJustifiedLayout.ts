@@ -6,6 +6,7 @@ interface Box {
   height: number;
   top: number;
   left: number;
+  aspectRatio: number;
 }
 
 interface ImageDimensions {
@@ -13,18 +14,27 @@ interface ImageDimensions {
   height: number;
 }
 
+type JustifiedLayoutResult = {
+  boxes: Box[];
+  containerHeight: number;
+};
+
 function useJustifiedLayout(
   images: ImageDimensions[],
   containerWidth: number
-): Box[] {
-  const [layout, setLayout] = useState<Box[]>([]);
+): JustifiedLayoutResult {
+  const [layout, setLayout] = useState<JustifiedLayoutResult>({
+    boxes: [],
+    containerHeight: 0,
+  });
 
   useEffect(() => {
     if (containerWidth && images.length > 0) {
       const calculatedLayout = calculateLayout(images, {
         containerWidth,
+        containerPadding: 0,
       });
-      setLayout(calculatedLayout.boxes);
+      setLayout(calculatedLayout);
     }
   }, [images, containerWidth]);
 
