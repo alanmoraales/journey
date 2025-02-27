@@ -1,7 +1,7 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito_Sans, Roboto_Slab } from "next/font/google";
 import mixpanelService from "@services/mixpanel";
-import "./globals.css";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
