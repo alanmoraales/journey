@@ -1,5 +1,6 @@
 import { j } from "./jstack";
 import uploadThingRouter from "@/server/uploadthing/router";
+import imagesRouter from "@/server/images/router";
 
 /**
  * This is your base API.
@@ -19,6 +20,7 @@ const api = j
  */
 const appRouter = j.mergeRouters(api, {
   uploadthing: uploadThingRouter,
+  images: imagesRouter,
 });
 
 export type AppRouter = typeof appRouter;
