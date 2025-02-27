@@ -1,0 +1,8 @@
+{
+  "name": "@repo/hooks",
+  "type": "module",
+  "exports": {
+    "./useJustifiedLayout": "./useJustifiedLayout.ts",
+    "./useResizeObserver": "./useResizeObserver.ts"
+  }
+}
