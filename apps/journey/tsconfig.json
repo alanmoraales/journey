@@ -26,7 +26,8 @@
       "@templates/*": ["./src/components/templates/*"],
       "@context/*": ["./src/context/*"],
       "@services/*": ["./src/services/*"],
-      "@styled/*": ["./styled-system/*"]
+      "@styled/*": ["./styled-system/*"],
+      "@server/*": ["./src/server/*"]
     }
   },
   "include": [
