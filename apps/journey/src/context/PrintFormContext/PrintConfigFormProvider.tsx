@@ -37,7 +37,7 @@ const PrintConfigFormProvider = ({
     defaultValues: {
       printSize: "",
       wantsFrame: "with-frame",
-      shipmentType: "",
+      shipmentType: "pick-up",
     },
     resolver: yupResolver(printConfigSchema),
   });
@@ -52,8 +52,8 @@ const PrintConfigFormProvider = ({
   const frameOptionPrice = isCustomSize
     ? 0
     : wantsFrame === "with-frame"
-    ? selectedPrintSize?.prices.withFrame
-    : selectedPrintSize?.prices.withoutFrame;
+      ? selectedPrintSize?.prices.withFrame
+      : selectedPrintSize?.prices.withoutFrame;
   const deliveryIsFree =
     shipmentType === "delivery-point" || shipmentType === "pick-up";
 
