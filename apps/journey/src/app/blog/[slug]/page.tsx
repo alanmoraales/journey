@@ -12,11 +12,12 @@ interface IPostPageParams {
 }
 
 interface IPostPageProps {
-  params: IPostPageParams;
+  params: Promise<IPostPageParams>;
 }
 
 const PostPage = async ({ params }: IPostPageProps) => {
-  const post = await notionService.getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await notionService.getPostBySlug(slug);
   const contentBlocks = await notionService.getPostContentBlocks(post.id);
   mixpanelService.trackEnterPage("Post", { title: post.title });
 

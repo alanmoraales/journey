@@ -1,3 +1,3 @@
-import GalleryServer from "./GalleryServer";
+import Gallery from "./Gallery";
 
-export default GalleryServer;
+export default Gallery;

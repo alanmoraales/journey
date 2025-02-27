@@ -1,13 +1,11 @@
-import { Suspense } from "react";
 import PreviewSectionTemplate from "@templates/PreviewSectionTemplate";
+import { Image } from "@server/actions/getImages";
 import Gallery from "@organisms/Gallery";
 
-const GallerySection = () => {
+const GallerySection = ({ images }: { images: Image[] }) => {
   return (
     <PreviewSectionTemplate title="Galería">
-      <Suspense>
-        <Gallery />
-      </Suspense>
+      <Gallery images={images} />
     </PreviewSectionTemplate>
   );
 };

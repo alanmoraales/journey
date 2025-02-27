@@ -274,9 +274,14 @@ const NotionService = () => {
   };
 
   const getPrints = async () => {
-    const results = await queryPrintsDatabase();
-    const prints = await Promise.all(results.map(mapPageObjectToPrint));
-    return prints;
+    try {
+      const results = await queryPrintsDatabase();
+      const prints = await Promise.all(results.map(mapPageObjectToPrint));
+      return prints;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   };
 
   const getFeaturedPrint = async () => {

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, JSX } from "react";
 import { css, cva } from "@styled/css";
 import { JsxStyleProps } from "@styled/types";
 

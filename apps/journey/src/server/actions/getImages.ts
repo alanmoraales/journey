@@ -1,5 +1,3 @@
-"use server";
-
 import environmentService from "@services/environment";
 
 interface Image {

@@ -19,11 +19,12 @@ interface IPrintsPageParams {
 }
 
 interface IPrintsPageProps {
-  params: IPrintsPageParams;
+  params: Promise<IPrintsPageParams>;
 }
 
 const PrintsPage = async ({ params }: IPrintsPageProps) => {
-  const print = await notionService.getPrintBySlug(params.slug);
+  const { slug } = await params;
+  const print = await notionService.getPrintBySlug(slug);
   const aboutPrintContentBlocks = await notionService.getPostContentBlocks(
     print.id
   );
