@@ -1,20 +1,21 @@
+import Link from "next/link";
 import Heading from "@atoms/Heading";
 import Grid from "@atoms/Grid";
 import Flex from "@atoms/Flex";
 import PageLimitContainer from "@atoms/PageLimitContainer";
 import { NavbarLogo, NavbarLink } from "@atoms/Navbar";
-import Link from "next/link";
+import environmentService from "@services/environment";
 
 const Navbar = () => {
   return (
     <PageLimitContainer>
       <Grid
-        gap="lg"
+        gap="md"
         gridTemplateColumns={{
           base: "1fr",
           sm: "auto 1fr",
         }}
-        alignItems="center"
+        alignItems="end"
       >
         <Link href="/">
           <Flex gap="md" alignItems="center">
@@ -22,8 +23,7 @@ const Navbar = () => {
             <Heading>The Photography Journey</Heading>
           </Flex>
         </Link>
-        {/** No index pages yet */}
-        {/* <Flex
+        <Flex
           gap="lg"
           alignItems="center"
           flexWrap="wrap"
@@ -36,10 +36,11 @@ const Navbar = () => {
             sm: "0",
           }}
         >
-          <NavbarLink href="/prints">Prints</NavbarLink>
-          <NavbarLink href="/posts">Blog</NavbarLink>
-          <NavbarLink href="/gallery">Gallery</NavbarLink>
-        </Flex> */}
+          <NavbarLink href="/blog">Blog</NavbarLink>
+          <NavbarLink href={environmentService.store.url} isExternal>
+            Wallpapers
+          </NavbarLink>
+        </Flex>
       </Grid>
     </PageLimitContainer>
   );
