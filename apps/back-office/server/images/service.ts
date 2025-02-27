@@ -1,3 +1,4 @@
+import { asc } from "drizzle-orm";
 import db from "@/server/database/client";
 import { images } from "@/server/database/schema";
 import type { CreateImagePayload, Image } from "@/server/images/types";
@@ -16,7 +17,7 @@ async function createOne(image: CreateImagePayload) {
 }
 
 async function getAll(): Promise<Image[]> {
-  const allImages = await db.select().from(images);
+  const allImages = await db.select().from(images).orderBy(asc(images.id));
   return allImages.map((image) => ({
     ...image,
     width: Number(image.width),
