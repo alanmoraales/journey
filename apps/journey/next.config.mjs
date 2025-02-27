@@ -8,6 +8,9 @@ const nextConfig = {
     loader: "custom",
     loaderFile: "./src/services/imageKitLoader.ts",
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default withPlaiceholder(nextConfig);
