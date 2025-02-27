@@ -2,6 +2,7 @@
   "name": "back-office",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "next build",
     "db:generate": "drizzle-kit generate",
@@ -47,5 +48,6 @@
     "postcss": "^8",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "bun@1.2.4"
 }
