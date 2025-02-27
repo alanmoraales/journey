@@ -3,7 +3,20 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "DATABASE_URL",
+        "UPLOADTHING_TOKEN",
+        "UPLOADTHING_CALLBACK_URL",
+        "IMAGE_KIT_URL",
+        "NOTION_SECRET_KEY",
+        "NOTION_PRINTS_DB_ID",
+        "NOTION_POSTS_DB_ID",
+        "NEXT_PUBLIC_WHATSAPP_NUMBER",
+        "NEXT_PUBLIC_STORE_URL",
+        "NEXT_PUBLIC_MIXPANEL_TOKEN",
+        "BACK_OFFICE_API_URL"
+      ]
     },
     "check-types": {
       "dependsOn": ["^check-types"]

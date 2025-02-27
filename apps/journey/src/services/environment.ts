@@ -14,7 +14,7 @@ const EnvironmentService = () => ({
     url: String(process.env.NEXT_PUBLIC_STORE_URL),
   },
   backOffice: {
-    url: String(process.env.NEXT_BACK_OFFICE_API_URL),
+    url: String(process.env.BACK_OFFICE_API_URL),
   },
 });
 
