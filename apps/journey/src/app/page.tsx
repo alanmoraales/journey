@@ -5,11 +5,11 @@ import RecentPrintsSection from "@organisms/RecentPrintsSection/RecentPrintsSect
 import GallerySection from "@organisms/GallerySection";
 // import FeaturedPrintSection from "@organisms/FeaturedPrintSection/FeaturedPrintSection";
 import mixpanelService from "@services/mixpanel";
-import getImages from "@server/actions/getImages";
+import journeyService from "@services/journey";
 
 const Home = async () => {
   const prints = await notionService.getPrints();
-  const images = await getImages();
+  const images = await journeyService.getImages();
   // const featuredPrint = await notionService.getFeaturedPrint();
   mixpanelService.trackEnterPage("Home");
 

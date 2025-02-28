@@ -1,5 +1,5 @@
 import PreviewSectionTemplate from "@templates/PreviewSectionTemplate";
-import { Image } from "@server/actions/getImages";
+import type { Image } from "@services/journey";
 import Gallery from "@organisms/Gallery";
 
 const GallerySection = ({ images }: { images: Image[] }) => {

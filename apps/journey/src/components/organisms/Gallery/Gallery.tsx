@@ -3,7 +3,7 @@
 import NextImage from "next/image";
 import useResizeObserver from "@repo/hooks/useResizeObserver";
 import useJustifiedLayout from "@repo/hooks/useJustifiedLayout";
-import type { Image } from "@server/actions/getImages";
+import type { Image } from "@services/journey";
 
 function Gallery({ images }: { images: Image[] }) {
   const { size, ref } = useResizeObserver<HTMLDivElement>();
