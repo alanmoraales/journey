@@ -1,18 +1,22 @@
-## Project Setup
+# Journey
 
-This project requires `Node.js version 20` to run. Please ensure you have the correct version installed before proceeding.
+Public-facing photography portfolio built with Next.js 15, Panda CSS, and Notion as a CMS.
 
-To run the project, follow these steps:
+See the [monorepo README](../../README.md) for full setup and development instructions.
 
-1. Install the project dependencies:
-    ```bash
-    npm install
-    ```
+## App Notes
 
-2. Create an `.env.local` file and add the `NOTION_SECRET_KEY`, `NOTION_POSTS_DB_ID`, and `NOTION_PRINTS_DB_ID` with your own keys as values.
+- **Port:** 3000
+- **Styling:** Panda CSS — run `bun run prepare` to regenerate the CSS after changing `panda.config.ts`
+- **CMS:** Notion (blog posts and prints fetched via `src/services/notion.ts`)
+- **Component structure:** Atomic design — `atoms/` → `molecules/` → `organisms/` → `templates/`
 
-3. Run the project in dev mode:
-    ```bash
-    npm run dev
-    ```
+## Dev
 
+```bash
+# From the repo root
+bun dev:journey
+
+# Or from this directory
+bun run dev
+```

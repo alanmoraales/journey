@@ -134,6 +134,12 @@ bun run <script> --filter=back-office
 3. Register it in `apps/back-office/server/router.ts` via `j.mergeRouters`
 4. The frontend client picks up the new types automatically
 
+### Component Organization
+
+`journey` components follow **atomic design**: `atoms/` → `molecules/` → `organisms/` → `templates/`. When adding UI to `journey`, place components at the appropriate level rather than creating flat directories.
+
+`back-office` components live flat under `src/components/`.
+
 ### Shared Package Awareness
 
 Changes to `packages/hooks` affect both `back-office` and `journey`. Test both apps when modifying shared packages.
