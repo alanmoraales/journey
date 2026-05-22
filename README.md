@@ -140,6 +140,6 @@ Changes to `packages/hooks` affect both `back-office` and `journey`. Test both a
 
 ### Turborepo Notes
 
-- `bun build` uses Turbo's cache. Force a clean build with `bun build --force`
+- `bun run build` uses Turbo's cache. Force a clean build with `bun run build -- --force`
 - Task dependencies are defined in `turbo.json` — packages build before apps
 - `dev` tasks run concurrently with no caching
