@@ -1,14 +1,14 @@
 import Navbar from "@organisms/Navbar";
 import Flex from "@atoms/Flex";
-import notionService from "@services/notion";
-import RecentPrintsSection from "@organisms/RecentPrintsSection/RecentPrintsSection";
+// import notionService from "@services/notion";
+// import RecentPrintsSection from "@organisms/RecentPrintsSection/RecentPrintsSection";
 import GallerySection from "@organisms/GallerySection";
 // import FeaturedPrintSection from "@organisms/FeaturedPrintSection/FeaturedPrintSection";
 import mixpanelService from "@services/mixpanel";
 import journeyService from "@services/journey";
 
 const Home = async () => {
-  const prints = await notionService.getPrints();
+  // const prints = await notionService.getPrints();
   const images = await journeyService.getImages();
   // const featuredPrint = await notionService.getFeaturedPrint();
   mixpanelService.trackEnterPage("Home");
@@ -22,7 +22,7 @@ const Home = async () => {
            * Temporary disabled
            */}
           {/* <FeaturedPrintSection print={featuredPrint} /> */}
-          <RecentPrintsSection prints={prints} />
+          {/* <RecentPrintsSection prints={prints} /> */}
           <GallerySection images={images} />
         </Flex>
       </main>
